@@ -1,0 +1,42 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {  // LinkedList class
+ *     int val;// value stored in node
+ *     ListNode next; // adress of next node
+ *     ListNode(int x) {// constructor for initilize node of LL
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+//         creating two pointers
+        ListNode slow = head;
+        ListNode fast = head;
+        
+//         using while loop for transverse the whole list
+        while(fast != null && fast.next != null){
+//             fast become null when number of nodes = Odd
+//             fast.next become null when number of nodes = Even
+
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            if(slow == fast){
+//                 it means there's cycle exist
+
+                return true;
+            }
+        }
+
+        return false;
+//         if while loop end means we find null in linkedList(LL) that implies it has no cycle       
+    }
+}
+
+// Time complexity of code  : O(N) 
+// we transverse whole list once
